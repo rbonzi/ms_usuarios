@@ -20,6 +20,10 @@ public class Usuario {
     private String Nombre;
     @Column(nullable = false, length = 50)
     private String Correo;
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 10, unique = true)
     private String RUN;
+
+    @ManyToOne
+    @JoinColumn(name = "id_membresia", nullable = false)
+    private Membresia membresia;
 }

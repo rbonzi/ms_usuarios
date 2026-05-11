@@ -7,27 +7,26 @@ import com.Usuario.usuario.model.Usuario;
 import com.Usuario.usuario.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.web.server.servlet.context.ServletComponentScan;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("gym/usuarios")
+@RequestMapping("/gym/socios")
 @RequiredArgsConstructor
 public class UsuarioController {
     private final UsuarioService usuarioService;
 
-    @GetMapping
+    @GetMapping("/listarsocios")
     public ResponseEntity<List<Usuario>> obtenerUsuarios(){
         return ResponseEntity.ok(usuarioService.obtenerUsuarios());
     }
 
-    @GetMapping("/idsearch/{idUsuario}")
-    public ResponseEntity<Usuario> obtenerPorId(@PathVariable Long idUsuario){
-        return usuarioService.obtenerPorId(idUsuario)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @GetMapping("/busqueda/{RUN}")
+    public ResponseEntity<UsuarioResponseDTO> obtenerUsuarioRUN(@PathVariable String RUN) {
+        return ResponseEntity.ok(usuarioService.obtenerPorRUN(RUN));
     }
 
     @PostMapping
@@ -36,13 +35,10 @@ public class UsuarioController {
         return ResponseEntity.status(201).body(nuevo);
     }
 
+    // Actualizar Datos usuario
     @PutMapping("/updateuser/{idUsuario}")
-    public ResponseEntity<UsuarioResponseDTO> actualizarUsuario(
-            @PathVariable Long idUsuario,
-            @Valid @RequestBody UsuarioRequestDTO dto){
-    return usuarioService.registrarUsuario(idUsuario, dto)
 
-
+    // Borrar usuario
     @DeleteMapping("/deleteuser/{idUsuario}")
     public ResponseEntity<Void> borrarUsuario(@PathVariable Long idUsuario){
         if(usuarioService.obtenerPorId(idUsuario).isEmpty()){

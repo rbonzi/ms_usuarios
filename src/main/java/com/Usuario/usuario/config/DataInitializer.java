@@ -32,11 +32,11 @@ public class DataInitializer implements CommandLineRunner {
         Membresia mem3 = new Membresia(3L,"Semestral","100000");
         Membresia mem4 = new Membresia(4L,"Anual","180000");
 
-        usuarioRepository.save(new Usuario(null, "Driscoll Atkins", "odio.vel@hotmail.com", "256628166", mem3));
-        usuarioRepository.save(new Usuario(null, "Lester Graves", "faucibus.id@hotmail.com", "558297262", mem1));
-        usuarioRepository.save(new Usuario(null, "Shana Calhoun", "parturient@hotmail.com", "488439752", mem2));
-        usuarioRepository.save(new Usuario(null, "Elvis Rogers", "lectus@google.com", "913018327", mem1));
-        usuarioRepository.save(new Usuario(null, "Adrian Cardenas", "tincidunt.congue@google.com", "516791034", mem1));
+//        usuarioRepository.save(new Usuario(null, "Driscoll Atkins", "odio.vel@hotmail.com", "256628166", mem3));
+//        usuarioRepository.save(new Usuario(null, "Lester Graves", "faucibus.id@hotmail.com", "558297262", mem1));
+//        usuarioRepository.save(new Usuario(null, "Shana Calhoun", "parturient@hotmail.com", "488439752", mem2));
+//        usuarioRepository.save(new Usuario(null, "Elvis Rogers", "lectus@google.com", "913018327", mem1));
+//        usuarioRepository.save(new Usuario(null, "Adrian Cardenas", "tincidunt.congue@google.com", "516791034", mem1));
 
 
     }

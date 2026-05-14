@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
             RuntimeException ex
     ){
         Map<String, String> error = new LinkedHashMap<>();
-        error.put("error", ex.getMessage());
+        error.put("Error:", ex.getMessage());
         return ResponseEntity.badRequest().body(error);
     }
 

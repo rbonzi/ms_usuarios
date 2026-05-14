@@ -7,6 +7,7 @@ import com.Usuario.usuario.dto.UsuarioResponseDTO;
 import com.Usuario.usuario.dto.actualizarDTO;
 import com.Usuario.usuario.model.Usuario;
 
+import com.Usuario.usuario.repository.UsuarioRepository;
 import com.Usuario.usuario.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UsuarioController {
     private final UsuarioService usuarioService;
+    private final UsuarioRepository usuarioRepository;
 
 
     // Listar todos los usuarios registrados
@@ -87,6 +89,17 @@ public class UsuarioController {
 
 
         return ResponseEntity.ok(respuesta);
+    }
+
+    @PutMapping("/procesarpago/{run}")
+    public ResponseEntity<?> procesarPago(@PathVariable String run){
+        Usuario usuario  = usuarioRepository.findByrun(run)
+                .orElseThrow(() -> new RuntimeException("Socio no encontrado"));
+
+        usuario.setPagoAlDia(true);
+        usuarioRepository.save(usuario);
+
+        return ResponseEntity.ok("Pago procesado exitosamente");
     }
 }
 

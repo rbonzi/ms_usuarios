@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
         error.put("Error:", ex.getMessage());
         return ResponseEntity.badRequest().body(error);
     }
-
+    //Se dispara cuando no se encuentra un recurso
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<Map<String, String>> handleNotFound(
             NoSuchElementException ex) {
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
         error.put("error", "Recurso no encontrado");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
-
+    //Se dispara cuando hay un error interno del servidor
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleGeneral(
             Exception ex) {

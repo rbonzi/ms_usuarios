@@ -96,7 +96,7 @@ public class UsuarioController {
 
         return ResponseEntity.ok(respuesta);
     }
-
+//Procesar pagos
     @PutMapping("/procesarpago/{run}")
     public ResponseEntity<?> procesarPago(@PathVariable String run){
         Usuario usuario  = usuarioRepository.findByrun(run)

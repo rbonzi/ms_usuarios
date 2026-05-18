@@ -39,8 +39,9 @@ public class UsuarioService {
                 obtenerTipoMembresia(usuario.getIdMembresia())
         );
     }
+    //Encontrar usuario por ID
     public Optional<UsuarioResponseDTO> findById(Long idUsuario) {return usuarioRepository.findById(idUsuario).map(this::mapToDTO);}
-
+    //Encontrar usuario por run
     public UsuarioResponseDTO obtenerPorRUN(String RUN){
         Usuario usuarioEncontrado = usuarioRepository.findByrun(RUN)
                 .orElseThrow(() -> new RuntimeException("No existe un usuario con ese RUN"));

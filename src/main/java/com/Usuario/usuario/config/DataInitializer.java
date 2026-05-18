@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class DataInitializer implements CommandLineRunner {
     private final UsuarioRepository usuarioRepository;
-
+//Mensajes para saber si hay datos guardados
     @Override
     public void run(String... args){
         if(usuarioRepository.count() > 0){

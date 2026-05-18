@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
+//Añadir roles para usuario y admin
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults());
         return http.build();
     }
-
+//Asignar nombres y contraseñas a los roles
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()
